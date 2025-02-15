@@ -60,6 +60,8 @@ dependencies {
     //new navigation compose
     implementation(libs.kotlinx.serialization.json)
     implementation(libs.navigation.compose)
+    // Coil
+    implementation(libs.coil.compose)
 
     implementation(libs.androidx.material3.window.size.android)
     implementation(libs.androidx.window)

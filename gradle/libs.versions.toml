@@ -13,6 +13,7 @@ serialization = "1.6.3"
 composeNavigation = "2.8.0-alpha08"
 retrofit = "2.10.0"
 okhttp = "4.12.0"
+coilCompose = "2.3.0"
 
 hiltNavigationCompose = "1.2.0"
 window = "1.3.0"
@@ -24,7 +25,7 @@ okhttp = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhtt
 logging-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
 kotlinx-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "serialization"}
 navigation-compose = { module = "androidx.navigation:navigation-compose", version.ref = "composeNavigation" }
-
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coilCompose" }
 dagger-hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 dagger-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
 androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hiltNavigationCompose" }
