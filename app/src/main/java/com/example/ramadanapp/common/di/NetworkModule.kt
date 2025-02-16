@@ -26,6 +26,17 @@ object NetworkModule {
     fun provideGsonConverterFactory(): GsonConverterFactory {
         return GsonConverterFactory.create()
     }
+    @Provides
+    @Singleton
+    fun provideOkHttpClientBuilder(): OkHttpClient.Builder {
+        return OkHttpClient.Builder()
+    }
+
+    @Provides
+    @Singleton
+    fun provideOkHttpClient(builder: OkHttpClient.Builder): OkHttpClient {
+        return builder.build()
+    }
 
     @Provides
     @Singleton
