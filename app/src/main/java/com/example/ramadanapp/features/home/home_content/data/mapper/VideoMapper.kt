@@ -1,9 +1,9 @@
-package com.example.ramadanapp.features.home.homescreen.data.mapper
+package com.example.ramadanapp.features.home.home_content.data.mapper
 
 import com.example.ramadanapp.common.data.mapper.Mapper
-import com.example.ramadanapp.features.home.homescreen.data.models.dto.VideoItemDto
-import com.example.ramadanapp.features.home.homescreen.data.models.dto.VideoResponseDto
-import com.example.ramadanapp.features.home.homescreen.domain.models.Video
+import com.example.ramadanapp.features.home.home_content.data.models.dto.VideoItemDto
+import com.example.ramadanapp.features.home.home_content.data.models.dto.VideoResponseDto
+import com.example.ramadanapp.features.home.home_content.domain.models.Video
 
 object VideoMapper : Mapper<VideoItemDto, Video, Unit>() {
     override fun dtoToDomain(model: VideoItemDto): Video {

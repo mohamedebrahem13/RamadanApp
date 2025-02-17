@@ -1,9 +1,9 @@
-package com.example.ramadanapp.features.home.homescreen.data.repository.remote
+package com.example.ramadanapp.features.home.home_content.data.repository.remote
 
 import com.example.ramadanapp.common.domain.repository.remote.INetworkProvider
-import com.example.ramadanapp.features.home.homescreen.data.models.dto.VideoItemDto
-import com.example.ramadanapp.features.home.homescreen.data.models.dto.VideoResponseDto
-import com.example.ramadanapp.features.home.homescreen.domain.repository.remote.IHomeRemoteDS
+import com.example.ramadanapp.features.home.home_content.data.models.dto.VideoItemDto
+import com.example.ramadanapp.features.home.home_content.data.models.dto.VideoResponseDto
+import com.example.ramadanapp.features.home.home_content.domain.repository.remote.IHomeRemoteDS
 import javax.inject.Inject
 
 class HomeRemoteDS @Inject constructor(

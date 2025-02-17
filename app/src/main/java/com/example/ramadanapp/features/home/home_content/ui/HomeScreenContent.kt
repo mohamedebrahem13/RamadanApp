@@ -1,4 +1,4 @@
-package com.example.ramadanapp.features.home.homescreen.ui
+package com.example.ramadanapp.features.home.home_content.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -27,8 +27,8 @@ import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.example.ramadanapp.common.extentions.extractYouTubeVideoId
 import com.example.ramadanapp.common.ui.composable.VerticaVideoCard
 import com.example.ramadanapp.common.ui.composable.YouTubePlayer
-import com.example.ramadanapp.features.home.homescreen.domain.models.Video
-import com.example.ramadanapp.features.home.homescreen.ui.viewmodel.HomeViewModel
+import com.example.ramadanapp.features.home.home_content.domain.models.Video
+import com.example.ramadanapp.features.home.home_content.ui.viewmodel.HomeViewModel
 
 @Composable
 fun HomeScreenContent(

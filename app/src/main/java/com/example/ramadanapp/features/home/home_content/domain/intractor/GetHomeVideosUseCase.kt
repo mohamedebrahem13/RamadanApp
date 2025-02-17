@@ -1,8 +1,8 @@
-package com.example.ramadanapp.features.home.homescreen.domain.intractor
+package com.example.ramadanapp.features.home.home_content.domain.intractor
 
 import com.example.ramadanapp.common.data.Resource
-import com.example.ramadanapp.features.home.homescreen.domain.models.Video
-import com.example.ramadanapp.features.home.homescreen.domain.repository.IHomeRepository
+import com.example.ramadanapp.features.home.home_content.domain.models.Video
+import com.example.ramadanapp.features.home.home_content.domain.repository.IHomeRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 import javax.inject.Inject

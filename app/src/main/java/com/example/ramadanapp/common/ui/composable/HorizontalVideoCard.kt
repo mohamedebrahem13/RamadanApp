@@ -15,6 +15,11 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.DisposableEffect
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -36,6 +41,16 @@ fun YouTubePlayer(
     isPlaying: Boolean,
     onThumbnailClick: () -> Unit
 ) {
+    var playerView: YouTubePlayerView? by remember { mutableStateOf(null) }
+
+    // Release the player when switching videos
+    DisposableEffect(youtubeVideoId) {
+        onDispose {
+            // Release the player to free resources when the video changes
+            playerView?.release()
+        }
+    }
+
     if (isPlaying) {
         // Show YouTube player
         AndroidView(
@@ -44,8 +59,9 @@ fun YouTubePlayer(
                 .height(200.dp) // Set a fixed height for video player
                 .padding(8.dp)
                 .clip(RoundedCornerShape(10.dp)),
-            factory = { it: Context ->
-                YouTubePlayerView(context = it).apply {
+            factory = { context: Context ->
+                YouTubePlayerView(context).apply {
+                    playerView = this
                     lifecycleOwner.lifecycle.addObserver(this)
 
                     addYouTubePlayerListener(object : AbstractYouTubePlayerListener() {
@@ -85,5 +101,3 @@ fun YouTubePlayer(
         }
     }
 }
-
-

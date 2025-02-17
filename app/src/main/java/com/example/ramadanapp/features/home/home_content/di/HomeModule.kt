@@ -1,11 +1,11 @@
-package com.example.ramadanapp.features.home.homescreen.di
+package com.example.ramadanapp.features.home.home_content.di
 
 import com.example.ramadanapp.common.domain.repository.remote.INetworkProvider
-import com.example.ramadanapp.features.home.homescreen.data.repository.HomeRepository
-import com.example.ramadanapp.features.home.homescreen.data.repository.remote.HomeRemoteDS
-import com.example.ramadanapp.features.home.homescreen.domain.intractor.GetHomeVideosUseCase
-import com.example.ramadanapp.features.home.homescreen.domain.repository.IHomeRepository
-import com.example.ramadanapp.features.home.homescreen.domain.repository.remote.IHomeRemoteDS
+import com.example.ramadanapp.features.home.home_content.data.repository.HomeRepository
+import com.example.ramadanapp.features.home.home_content.data.repository.remote.HomeRemoteDS
+import com.example.ramadanapp.features.home.home_content.domain.intractor.GetHomeVideosUseCase
+import com.example.ramadanapp.features.home.home_content.domain.repository.IHomeRepository
+import com.example.ramadanapp.features.home.home_content.domain.repository.remote.IHomeRemoteDS
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

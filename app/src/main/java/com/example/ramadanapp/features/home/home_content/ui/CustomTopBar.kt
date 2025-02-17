@@ -1,4 +1,4 @@
-package com.example.ramadanapp.features.home.homescreen.ui
+package com.example.ramadanapp.features.home.home_content.ui
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement

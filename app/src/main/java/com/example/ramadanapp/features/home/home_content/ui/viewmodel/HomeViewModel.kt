@@ -1,10 +1,10 @@
-package com.example.ramadanapp.features.home.homescreen.ui.viewmodel
+package com.example.ramadanapp.features.home.home_content.ui.viewmodel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.ramadanapp.common.data.Resource
-import com.example.ramadanapp.features.home.homescreen.domain.intractor.GetHomeVideosUseCase
-import com.example.ramadanapp.features.home.homescreen.domain.models.Video
+import com.example.ramadanapp.features.home.home_content.domain.intractor.GetHomeVideosUseCase
+import com.example.ramadanapp.features.home.home_content.domain.models.Video
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow

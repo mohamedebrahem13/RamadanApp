@@ -1,4 +1,4 @@
-package com.example.ramadanapp.features.home.homescreen.data.models.dto
+package com.example.ramadanapp.features.home.home_content.data.models.dto
 
 import com.google.gson.annotations.SerializedName
 

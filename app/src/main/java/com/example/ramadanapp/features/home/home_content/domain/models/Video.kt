@@ -1,4 +1,4 @@
-package com.example.ramadanapp.features.home.homescreen.domain.models
+package com.example.ramadanapp.features.home.home_content.domain.models
 
 data class Video(
     val subCategory: String,
