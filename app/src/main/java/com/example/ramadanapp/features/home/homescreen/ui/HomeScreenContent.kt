@@ -23,6 +23,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.LifecycleOwner
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import com.example.ramadanapp.common.extentions.extractYouTubeVideoId
 import com.example.ramadanapp.common.ui.composable.VerticaVideoCard
 import com.example.ramadanapp.common.ui.composable.YouTubePlayer
@@ -32,9 +33,9 @@ import com.example.ramadanapp.features.home.homescreen.ui.viewmodel.HomeViewMode
 @Composable
 fun HomeScreenContent(
     viewModel: HomeViewModel = hiltViewModel(),
-    lifecycleOwner: LifecycleOwner,
     onVideoClick: (Video) -> Unit
 ) {
+    val lifecycleOwner = LocalLifecycleOwner.current // Get LifecycleOwner
     val homeVideos by viewModel.groupedVideos.collectAsState()
     var isPlaying by remember { mutableStateOf(false) }
     val selectedVideo by remember { mutableStateOf(homeVideos.values.firstOrNull()?.firstOrNull()) }
@@ -85,8 +86,8 @@ fun HomeScreenContent(
 fun VideoCategoryList(videos: List<Video>, onVideoClick: (Video) -> Unit) {
     LazyRow(modifier = Modifier.fillMaxWidth()) {
         items(videos) { video ->
-            VerticaVideoCard(video.url,   onClick = { vid ->
-                println("Video clicked: $vid")
+            VerticaVideoCard(video.url,onClick = {
+                onVideoClick(video)
             })
         }
     }
