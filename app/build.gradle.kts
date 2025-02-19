@@ -43,6 +43,7 @@ android {
 }
 
 dependencies {
+
     implementation (libs.core)
 
     implementation (libs.google.accompanist.systemuicontroller)
@@ -58,6 +59,7 @@ dependencies {
     implementation(libs.logging.interceptor)
     // Dagger Hilt
     implementation(libs.dagger.hilt.android)
+    testImplementation(libs.kotest.runner.junit5.jvm)
 
     kapt(libs.dagger.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
@@ -66,6 +68,13 @@ dependencies {
     implementation(libs.navigation.compose)
     // Coil
     implementation(libs.coil.compose)
+
+    testImplementation(libs.mockk)
+    // Turbine
+    testImplementation(libs.turbine)
+    // Coroutines
+
+    testImplementation(libs.kotlinx.coroutines.test)
 
     implementation(libs.androidx.material3.window.size.android)
     implementation(libs.androidx.window)
