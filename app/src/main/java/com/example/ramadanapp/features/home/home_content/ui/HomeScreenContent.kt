@@ -40,7 +40,7 @@ fun HomeScreenContent(
     onVideoClick: (Video) -> Unit
 ) {
     val lifecycleOwner = LocalLifecycleOwner.current
-    val homeVideosState by viewModel.homeVideos.collectAsState() // ✅ Observe the full Resource state
+    val homeVideosState by viewModel.homeVideos.collectAsState()
 
     Box(modifier = Modifier.fillMaxSize()) {
         CustomTopBar(

@@ -22,12 +22,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import com.example.ramadanapp.R
 
 @Composable
 fun CustomTopBar(
     modifier: Modifier = Modifier,
-    title: String = "أهلا بك مجدداً", // Default title
+    title: String = stringResource(R.string.welcome), // Default title
     subtitle: String = "محمد علي", // Default subtitle
     onNotificationClick: () -> Unit,
     onSearchClick: () -> Unit
@@ -36,7 +38,10 @@ fun CustomTopBar(
         modifier = modifier
             .height(150.dp) // Increased height
             .fillMaxWidth()
-            .background(Color.Green, shape = RoundedCornerShape(bottomStart = 8.dp, bottomEnd = 8.dp)) // Rounded bottom corners
+            .background(
+                Color.Green,
+                shape = RoundedCornerShape(bottomStart = 8.dp, bottomEnd = 8.dp)
+            ) // Rounded bottom corners
             .clip(RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp)) // Ensures clipping
             .padding(horizontal = 16.dp, vertical = 16.dp)
     ) {
@@ -62,7 +67,7 @@ fun CustomTopBar(
                 IconButton(onClick = onSearchClick) {
                     Icon(
                         imageVector = Icons.Default.Search,
-                        contentDescription = "Search",
+                        contentDescription = stringResource(R.string.search),
                         tint = Color.White
                     )
                 }
@@ -70,7 +75,7 @@ fun CustomTopBar(
                 IconButton(onClick = onNotificationClick) {
                     Icon(
                         imageVector = Icons.Default.Notifications,
-                        contentDescription = "Notifications",
+                        contentDescription = stringResource(R.string.notifications),
                         tint = Color.White
                     )
                 }
