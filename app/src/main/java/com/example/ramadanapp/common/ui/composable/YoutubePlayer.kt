@@ -46,7 +46,10 @@ fun YouTubePlayer(
         youTubePlayerInstance?.cueVideo(youtubeVideoId, startSeconds = 0f) // ✅ Change video smoothly
 
         onDispose {
-            // Do NOT release the player immediately; let it persist for better UX
+            playerView?.release() // ✅ Manually release the player
+            playerView = null
+            youTubePlayerInstance = null
         }
+
     }
 }

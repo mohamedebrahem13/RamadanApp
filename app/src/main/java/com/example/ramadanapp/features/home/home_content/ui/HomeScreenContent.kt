@@ -19,12 +19,14 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import com.example.ramadanapp.R
 import com.example.ramadanapp.common.data.Resource
 import com.example.ramadanapp.common.extentions.extractYouTubeVideoId
 import com.example.ramadanapp.common.ui.composable.YouTubePlayer
@@ -38,7 +40,7 @@ fun HomeScreenContent(
     onVideoClick: (Video) -> Unit
 ) {
     val lifecycleOwner = LocalLifecycleOwner.current
-    val homeVideosState by viewModel.homeVideos.collectAsState() // ✅ Observe the full Resource state
+    val homeVideosState by viewModel.homeVideos.collectAsState()
 
     Box(modifier = Modifier.fillMaxSize()) {
         CustomTopBar(
@@ -58,7 +60,7 @@ fun HomeScreenContent(
             is Resource.Failure -> {
                 // ✅ Show Error UI
                 ErrorScreen(
-                    errorMessage = "Failed to load videos",
+                    errorMessage =stringResource(R.string.failed_load_videos),
                     modifier = Modifier.align(Alignment.Center)
                 )
             }

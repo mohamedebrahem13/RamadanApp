@@ -12,7 +12,6 @@ class GetHomeVideosUseCase @Inject constructor(
 ) {
     suspend operator fun invoke(): Flow<Resource<List<Video>>> = flow {
         emit(Resource.loading()) // Emit loading state
-
         try {
             val videos = homeRepository.getHomeData()
             emit(Resource.success(videos)) // Emit success state
