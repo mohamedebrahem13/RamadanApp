@@ -27,6 +27,8 @@ import androidx.compose.ui.unit.dp
 @Composable
 fun CustomTopBar(
     modifier: Modifier = Modifier,
+    title: String = "أهلا بك مجدداً", // Default title
+    subtitle: String = "محمد علي", // Default subtitle
     onNotificationClick: () -> Unit,
     onSearchClick: () -> Unit
 ) {
@@ -34,7 +36,7 @@ fun CustomTopBar(
         modifier = modifier
             .height(150.dp) // Increased height
             .fillMaxWidth()
-            .background(Color(0xFF4D6A50), shape = RoundedCornerShape(bottomStart = 8.dp, bottomEnd = 8.dp)) // Rounded bottom corners
+            .background(Color.Green, shape = RoundedCornerShape(bottomStart = 8.dp, bottomEnd = 8.dp)) // Rounded bottom corners
             .clip(RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp)) // Ensures clipping
             .padding(horizontal = 16.dp, vertical = 16.dp)
     ) {
@@ -45,12 +47,12 @@ fun CustomTopBar(
         ) {
             Column {
                 Text(
-                    text = "أهلا بك مجدداً",
+                    text = title,
                     color = Color.White,
                     style = MaterialTheme.typography.titleMedium
                 )
                 Text(
-                    text = "محمد علي",  // Change dynamically if needed
+                    text = subtitle,
                     color = Color.White,
                     style = MaterialTheme.typography.bodyMedium
                 )

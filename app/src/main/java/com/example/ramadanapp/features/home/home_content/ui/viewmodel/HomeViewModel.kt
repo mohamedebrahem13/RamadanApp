@@ -22,6 +22,7 @@ class HomeViewModel @Inject constructor(
 
     private val _groupedVideos = MutableStateFlow<Map<String, List<Video>>>(emptyMap())
     val groupedVideos: StateFlow<Map<String, List<Video>>> = _groupedVideos
+
     init {
         fetchHomeVideos()
     }

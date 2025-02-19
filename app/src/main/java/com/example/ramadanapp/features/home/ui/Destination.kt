@@ -54,7 +54,11 @@ fun NavGraphBuilder.homeGraph(navController: NavController) {
         }
         composable<Destination.ContentList> { backStackEntry ->
             val args = backStackEntry.toRoute<Destination.ContentList>()
-            ContentListScreen(args.category, args.videoUrl)
+            ContentListScreen(args.category, args.videoUrl){
+                navController.popBackStack()
+            }
+
+
         }
     }
 }
