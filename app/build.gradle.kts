@@ -43,6 +43,9 @@ android {
 }
 
 dependencies {
+    implementation (libs.core)
+
+    implementation (libs.google.accompanist.systemuicontroller)
 
     // Retrofit
     implementation(libs.retrofit)
@@ -55,6 +58,7 @@ dependencies {
     implementation(libs.logging.interceptor)
     // Dagger Hilt
     implementation(libs.dagger.hilt.android)
+
     kapt(libs.dagger.hilt.compiler)
     implementation(libs.androidx.hilt.navigation.compose)
     //new navigation compose
