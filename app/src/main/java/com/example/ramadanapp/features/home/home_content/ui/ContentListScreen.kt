@@ -29,6 +29,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
 import androidx.compose.ui.text.style.TextDecoration
@@ -36,6 +37,7 @@ import androidx.compose.ui.text.withStyle
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.LocalLifecycleOwner
+import com.example.ramadanapp.R
 import com.example.ramadanapp.common.extentions.extractYouTubeVideoId
 import com.example.ramadanapp.common.ui.composable.YouTubePlayer
 import com.example.ramadanapp.common.ui.composable.YouTubeThumbnail
@@ -70,10 +72,10 @@ fun ContentListScreen(
                     .padding(top = 16.dp)
             ) {
                 Icon(
-                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                    contentDescription = "Back",
-                    tint = Color.White
-                )
+                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                contentDescription = stringResource(R.string.back),
+                tint = Color.White
+            )
             }
         }
 
@@ -105,34 +107,35 @@ fun ContentListScreen(
                     modifier = Modifier.padding(top = 8.dp)
                 )
                 IconButton(onClick = { /* Handle Share */ }) {
-                    Icon(imageVector = Icons.Default.Share, contentDescription = "Share")
+                    Icon(imageVector = Icons.Default.Share, contentDescription = stringResource(R.string.share))
                 }
+
                 IconButton(onClick = { /* Handle Save */ }) {
-                    Icon(imageVector = Icons.Default.FavoriteBorder, contentDescription = "Save")
+                    Icon(imageVector = Icons.Default.FavoriteBorder, contentDescription = stringResource(R.string.save))
                 }
 
             }
-                    Text(
-                        text = buildAnnotatedString {
-                            withStyle(
-                                style = SpanStyle(
-                                    color = Color.Black,
-                                    textDecoration = TextDecoration.Underline // Underline "المزيد من الفيديوهات"
-                                )
-                            ) {
-                                append("المزيد من الفيديوهات\n") // Add a newline here
-                            }
-                            withStyle(style = SpanStyle(color = Color.Blue)) { // Category Style
-                                append(video.category)
-                            }
-                            append(" - ") // Separator
-                            withStyle(style = SpanStyle(color = Color.Gray)) { // Subcategory Style
-                                append(video.subCategory)
-                            }
-                        },
-                        style = MaterialTheme.typography.headlineSmall,
-                        modifier = Modifier.padding(horizontal = 16.dp)
-                    )
+            Text(
+                text = buildAnnotatedString {
+                    withStyle(
+                        style = SpanStyle(
+                            color = Color.Black,
+                            textDecoration = TextDecoration.Underline
+                        )
+                    ) {
+                        append(stringResource(R.string.more_videos)) // Now using string resource
+                    }
+                    withStyle(style = SpanStyle(color = Color.Blue)) {
+                        append(video.category)
+                    }
+                    append(" - ") // Separator
+                    withStyle(style = SpanStyle(color = Color.Gray)) {
+                        append(video.subCategory)
+                    }
+                },
+                style = MaterialTheme.typography.headlineSmall,
+                modifier = Modifier.padding(horizontal = 16.dp)
+            )
 
         }
 
