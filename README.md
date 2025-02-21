@@ -4,13 +4,13 @@
 ## 📸 Screenshots  
 
 ###  Home Screen  
-![Home screen](Screenshot/Screenshot_٢٠٢٥٠٢٢١_١٥٤٦٢٣.jpg)  
+![Home screen](screen_shots/Screenshot_٢٠٢٥٠٢٢١_١٥٤٦٢٣.jpg)  
 
 ###   Home Screen   
-![Home screen](Screenshot/Screenshot_٢٠٢٥٠٢٢١_١٥٤٦٣١.png)  
+![Home screen](screen_shots/Screenshot_٢٠٢٥٠٢٢١_١٥٤٦٣١.png)  
 
 ###  content list screen
-![content list screen](Screenshot/Screenshot_٢٠٢٥٠٢٢١_١٥٤٦٣٦.png)  
+![content list screen](screen_shots/Screenshot_٢٠٢٥٠٢٢١_١٥٤٦٣٦.png)  
 
 
 ## Video
