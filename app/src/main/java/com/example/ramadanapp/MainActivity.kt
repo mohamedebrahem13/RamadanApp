@@ -12,12 +12,13 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.example.ramadanapp.android.theme.RamadanAppTheme
-import com.example.ramadanapp.features.home.ui.BottomNavBar
-import com.example.ramadanapp.features.home.ui.Destination
-import com.example.ramadanapp.features.home.ui.downloadsGraph
-import com.example.ramadanapp.features.home.ui.favoritesGraph
-import com.example.ramadanapp.features.home.ui.homeGraph
-import com.example.ramadanapp.features.home.ui.newContentGraph
+import com.example.ramadanapp.features.home.navigation.BottomNavBar
+import com.example.ramadanapp.features.home.navigation.Destination
+import com.example.ramadanapp.features.home.navigation.downloadsGraph
+import com.example.ramadanapp.features.home.navigation.favoritesGraph
+import com.example.ramadanapp.features.home.navigation.homeGraph
+import com.example.ramadanapp.features.home.navigation.newContentGraph
+import com.example.ramadanapp.features.home.navigation.settingsGraph
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -39,7 +40,7 @@ fun HomeNavHost() {
     // Use Scaffold to add bottomBar and manage insets
     Scaffold(
         bottomBar = { BottomNavBar(navController) },
-        contentWindowInsets = WindowInsets(0) // Set content insets to avoid overlap
+        contentWindowInsets = WindowInsets(0)
     ) { paddingValues ->
         // Wrap the NavHost with proper padding
         NavHost(
@@ -51,6 +52,7 @@ fun HomeNavHost() {
             newContentGraph()
             favoritesGraph()
             downloadsGraph()
+            settingsGraph()
         }
     }
 }
