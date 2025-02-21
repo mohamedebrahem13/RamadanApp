@@ -14,7 +14,9 @@
 
 
 # Video
-![app_overview](video/Screenrecording_20250221_141708.mp4)  
+
+https://github.com/user-attachments/assets/1e2a6518-5746-458a-884e-01f21573efb2
+
 
 
 Overview
