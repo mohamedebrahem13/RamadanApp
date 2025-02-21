@@ -3,17 +3,17 @@
 
 ## 📸 Screenshots  
 
-###  Home Screen  
+#  Home Screen  
 ![Home screen](screen_shots/Screenshot_٢٠٢٥٠٢٢١_١٥٤٦٢٣.jpg)  
 
-###   Home Screen   
-![Home screen](screen_shots/Screenshot_٢٠٢٥٠٢٢١_١٥٤٦٣١.png)  
+#   Home Screen   
+![Home screen](screen_shots/Screenshot_٢٠٢٥٠٢٢١_١٥٤٦٣١.jpg)  
 
-###  content list screen
-![content list screen](screen_shots/Screenshot_٢٠٢٥٠٢٢١_١٥٤٦٣٦.png)  
+# content list screen
+![content list screen](screen_shots/Screenshot_٢٠٢٥٠٢٢١_١٥٤٦٣٦.jpg)  
 
 
-## Video
+# Video
 ![app_overview](video/Screenrecording_20250221_141708.mp4)  
 
 
