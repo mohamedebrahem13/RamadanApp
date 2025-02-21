@@ -1,4 +1,4 @@
-package com.example.ramadanapp.features.home.downloads.ui
+package com.example.ramadanapp.features.home.settings.ui
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -8,11 +8,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 
 @Composable
-fun DownloadsScreen(modifier: Modifier = Modifier) {
+fun SettingsScreen() {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        Text(text = "Downloads Screen")
+        Text(text = "Settings Screen")
     }
 }

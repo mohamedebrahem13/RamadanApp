@@ -8,5 +8,11 @@
     <string name="notifications">Notifications</string>
     <string name="search">Search</string>
     <string name="welcome">أهلا بك مجدداً</string>
+    <string name="home">الرئيسية</string>
+    <string name="favorite">المفضلة</string>
+    <string name="download">التنزيلات</string>
+    <string name="everything_new">كل ماهو جديد</string>
+    <string name="settings">الإعدادات</string>
+
 
 </resources>

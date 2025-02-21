@@ -1,12 +1,15 @@
-package com.example.ramadanapp.features.home.ui
+package com.example.ramadanapp.features.home.navigation
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import androidx.navigation.compose.composable
 import androidx.navigation.navigation
 import androidx.navigation.toRoute
+import com.example.ramadanapp.features.home.downloads.ui.DownloadsScreen
+import com.example.ramadanapp.features.home.favorites.ui.FavoritesScreen
 import com.example.ramadanapp.features.home.home_content.ui.ContentListScreen
 import com.example.ramadanapp.features.home.home_content.ui.HomeScreenContent
 import com.example.ramadanapp.features.home.newcontent.ui.NewContentScreen
+import com.example.ramadanapp.features.home.settings.ui.SettingsScreen
 import kotlinx.serialization.Serializable
 
 @Serializable
@@ -23,7 +26,8 @@ sealed class Destination {
 
     @Serializable
     data object Downloads : Destination()
-
+    @Serializable
+    data object Settings : Destination()
     @Serializable
     data class ContentList(val category: String, val videoUrl: String) : Destination()
 
@@ -38,6 +42,9 @@ sealed class Destination {
 
     @Serializable
     data object DownloadsGraph : Destination()
+
+    @Serializable
+    data object SettingsGraph : Destination()
 }
 
 // Home Graph
@@ -79,6 +86,7 @@ fun NavGraphBuilder.favoritesGraph() {
     navigation<Destination.FavoritesGraph>(startDestination = Destination.Favorites) {
         composable<Destination.Favorites> {
             // Favorites Screen UI
+            FavoritesScreen()
         }
     }
 }
@@ -88,6 +96,17 @@ fun NavGraphBuilder.downloadsGraph() {
     navigation<Destination.DownloadsGraph>(startDestination = Destination.Downloads) {
         composable<Destination.Downloads> {
             // Downloads Screen UI
+            DownloadsScreen()
+        }
+    }
+}
+// Settings Graph
+fun NavGraphBuilder.settingsGraph() {
+    navigation<Destination.SettingsGraph>(startDestination = Destination.Settings) {
+        composable<Destination.Settings> {
+            // Settings Screen UI
+            SettingsScreen()
+
         }
     }
 }

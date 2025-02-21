@@ -1,4 +1,4 @@
-package com.example.ramadanapp.features.home.ui
+package com.example.ramadanapp.features.home.navigation
 
 import android.util.Log
 import androidx.compose.foundation.Image
@@ -11,6 +11,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ColorFilter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination.Companion.hasRoute
 import androidx.navigation.NavDestination.Companion.hierarchy
@@ -21,10 +22,11 @@ import com.example.ramadanapp.R
 @Composable
 fun BottomNavBar(navController: NavController) {
     val topLevelRoutes  = listOf(
-        TopLevelRoute(destination = Destination.HomeGraph, title = "الرئيسية", icon = R.drawable.home_24dp),
-        TopLevelRoute(destination = Destination.NewContentGraph, title = "كل ماهو جديد", icon = R.drawable.video_library_24),
-        TopLevelRoute(destination = Destination.FavoritesGraph, title = "المفضلة", icon = R.drawable.star_24dp),
-        TopLevelRoute(destination = Destination.DownloadsGraph, title = "التنزيلات", icon = R.drawable.arrow_circle_down_24dp),
+        TopLevelRoute(destination = Destination.HomeGraph, title = stringResource(R.string.home), icon = R.drawable.home_24dp),
+        TopLevelRoute(destination = Destination.NewContentGraph, title = stringResource(R.string.everything_new), icon = R.drawable.video_library_24),
+        TopLevelRoute(destination = Destination.FavoritesGraph, title = stringResource(R.string.favorite), icon = R.drawable.star_24dp),
+        TopLevelRoute(destination = Destination.DownloadsGraph, title = stringResource(R.string.download), icon = R.drawable.arrow_circle_down_24dp),
+        TopLevelRoute(destination = Destination.SettingsGraph, title = stringResource(R.string.settings), icon = R.drawable.settings_24dp_e8eaed)
     )
     NavigationBar(containerColor = Color.White) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()

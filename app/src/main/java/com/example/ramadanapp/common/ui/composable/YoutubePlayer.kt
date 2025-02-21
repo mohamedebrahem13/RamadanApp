@@ -44,11 +44,8 @@ fun YouTubePlayer(
     // When video ID changes, load new video
     DisposableEffect(youtubeVideoId) {
         youTubePlayerInstance?.cueVideo(youtubeVideoId, startSeconds = 0f) // ✅ Change video smoothly
-
         onDispose {
-            playerView?.release() // ✅ Manually release the player
-            playerView = null
-            youTubePlayerInstance = null
+
         }
 
     }
