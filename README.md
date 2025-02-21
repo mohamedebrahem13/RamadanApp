@@ -3,13 +3,13 @@
 
 ## 📸 Screenshots  
 
-#  Home Screen  
+  Home Screen  
 ![Home screen](screen_shots/Screenshot_٢٠٢٥٠٢٢١_١٥٤٦٢٣.jpg)  
 
-#   Home Screen   
+ Home Screen   
 ![Home screen](screen_shots/Screenshot_٢٠٢٥٠٢٢١_١٥٤٦٣١.jpg)  
 
-# content list screen
+content list screen
 ![content list screen](screen_shots/Screenshot_٢٠٢٥٠٢٢١_١٥٤٦٣٦.jpg)  
 
 
