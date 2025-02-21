@@ -1,4 +1,21 @@
-RamadanApp
+# RamadanApp
+## Screenshots
+
+## 📸 Screenshots  
+
+###  Home Screen  
+![Home screen](Screenshot/Screenshot_٢٠٢٥٠٢٢١_١٥٤٦٢٣.jpg)  
+
+###   Home Screen   
+![Home screen](Screenshot/Screenshot_٢٠٢٥٠٢٢١_١٥٤٦٣١.png)  
+
+###  content list screen
+![content list screen](Screenshot/Screenshot_٢٠٢٥٠٢٢١_١٥٤٦٣٦.png)  
+
+
+## Video
+![app_overview](video/Screenrecording_20250221_141708.mp4)  
+
 
 Overview
 
@@ -39,8 +56,6 @@ Type-Safe Navigation with Serialization: Utilized for navigation
 Nested Navigation Graphs: For improved back stack handling
 
 Project Structure
-
-The app is structured into distinct modules:
 
 Features
 
@@ -127,3 +142,4 @@ Implement a wrapper class for exceptions
 Extend Ktor integration for networking
 
 Expand feature set with more functionalities
+
