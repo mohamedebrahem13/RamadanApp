@@ -40,7 +40,7 @@ fun HomeNavHost() {
     // Use Scaffold to add bottomBar and manage insets
     Scaffold(
         bottomBar = { BottomNavBar(navController) },
-        contentWindowInsets = WindowInsets(0) // Set content insets to avoid overlap
+        contentWindowInsets = WindowInsets(0)
     ) { paddingValues ->
         // Wrap the NavHost with proper padding
         NavHost(
