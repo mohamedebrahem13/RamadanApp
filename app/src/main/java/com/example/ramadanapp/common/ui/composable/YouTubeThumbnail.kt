@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -22,14 +23,16 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.ramadanapp.common.extentions.extractYouTubeVideoId
 import com.example.ramadanapp.common.extentions.getYouTubeThumbnailUrl
-import com.example.ramadanapp.features.home.home_content.domain.models.Video
+import com.example.ramadanapp.features.home.home_content.domain.models.Category
+import com.example.ramadanapp.features.home.home_content.domain.models.Item
 
 @Composable
 fun YouTubeThumbnail(
     modifier: Modifier = Modifier,
-    video: Video,
-    onClick: (() -> Unit)? = null,
-    onClickWithVideo: ((Video) -> Unit)? = null,
+    category: Category? = null,  // Nullable category
+    item: Item? = null,  // Nullable item
+    onClickCategory: ((Category) -> Unit)? = null,
+    onClickWithItem: ((Item) -> Unit)? = null,  // Updated function name
     isVertical: Boolean = false
 ) {
     Box(
@@ -37,12 +40,15 @@ fun YouTubeThumbnail(
             .fillMaxWidth()
             .padding(8.dp)
             .clickable {
-                onClickWithVideo?.invoke(video) ?: onClick?.invoke()
+                category?.let { onClickCategory?.invoke(it) } // Invoke category click if available
+                    ?: item?.let { onClickWithItem?.invoke(it) } // Otherwise, invoke item click
             }
             .clip(RoundedCornerShape(10.dp))
     ) {
+        val imageUrl = item?.url?.extractYouTubeVideoId()?.let { getYouTubeThumbnailUrl(it) } ?: category?.url
+
         AsyncImage(
-            model = getYouTubeThumbnailUrl(video.url.extractYouTubeVideoId()),
+            model = imageUrl,
             contentDescription = "Video Thumbnail",
             contentScale = ContentScale.Crop,
             modifier = Modifier.fillMaxSize()

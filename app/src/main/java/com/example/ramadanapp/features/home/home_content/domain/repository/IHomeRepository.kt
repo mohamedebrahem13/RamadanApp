@@ -1,7 +1,9 @@
 package com.example.ramadanapp.features.home.home_content.domain.repository
 
-import com.example.ramadanapp.features.home.home_content.domain.models.Video
+import com.example.ramadanapp.features.home.home_content.domain.models.RamadanResponse
 
 interface IHomeRepository {
-    suspend fun getHomeData(): List<Video>
+    suspend fun getHomeDataFromRemote(): RamadanResponse
+    suspend fun getHomeDataFromLocal(): RamadanResponse
+    suspend fun saveRamadanResponse(response: RamadanResponse)
 }

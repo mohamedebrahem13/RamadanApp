@@ -46,7 +46,7 @@ object NetworkModule {
     ): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient.build())
-            .baseUrl("https://api.RamadanApp.com/v1/")
+            .baseUrl("https://raw.githubusercontent.com/")
             .addConverterFactory(gsonConverterFactory)
             .build()
     }
