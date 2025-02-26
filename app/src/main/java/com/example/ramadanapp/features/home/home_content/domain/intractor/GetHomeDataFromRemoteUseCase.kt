@@ -1,6 +1,5 @@
 package com.example.ramadanapp.features.home.home_content.domain.intractor
 
-import android.util.Log
 import com.example.ramadanapp.common.data.Resource
 import com.example.ramadanapp.features.home.home_content.domain.models.RamadanResponse
 import com.example.ramadanapp.features.home.home_content.domain.repository.IHomeRepository
@@ -15,7 +14,6 @@ class GetHomeDataFromRemoteUseCase @Inject constructor(
         emit(Resource.loading()) // Emit loading state
         try {
             val response  = homeRepository.getHomeDataFromRemote()
-            Log.d("TAG", "invoke: $response")
             homeRepository.saveRamadanResponse(response)
             emit(Resource.success(response)) // Emit success state
         } catch (e: Exception) {

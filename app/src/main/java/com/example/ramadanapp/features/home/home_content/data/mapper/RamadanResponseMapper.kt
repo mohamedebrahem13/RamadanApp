@@ -35,8 +35,8 @@ object RamadanResponseMapper : Mapper<RamadanResponseDto, RamadanResponse, Ramad
             RamadanResponse(sections = emptyList(), items = emptyList())
         } else {
             RamadanResponse(
-                sections = model.sections.orEmpty().map { it.toDomain() },
-                items = model.items.orEmpty().map { it.toDomain() }
+                sections = model.sections.map { it.toDomain() },
+                items = model.items.map { it.toDomain() }
             )
         }
     }
