@@ -4,30 +4,35 @@
 ## 📸 Screenshots  
 
 ##  Home Screen  
-![Home screen](screen_shots/Screenshot_٢٠٢٥٠٢٢١_١٥٤٦٢٣.jpg)  
+![Image](https://github.com/user-attachments/assets/56e5fb7d-90fb-40d0-acce-6c56331e771c)
 
-## Home Screen   
-![Home screen](screen_shots/Screenshot_٢٠٢٥٠٢٢١_١٥٤٦٣١.jpg)  
+## content list screen  
+![Image](https://github.com/user-attachments/assets/636a8c3d-7351-428a-8254-c4a1521173ba)
 
 ## content list screen
-![content list screen](screen_shots/Screenshot_٢٠٢٥٠٢٢١_١٥٤٦٣٦.jpg)  
-
+![Image](https://github.com/user-attachments/assets/f71bbfe6-f0a8-47c9-96c6-5effc131808d)
 
 # Video
-
-https://github.com/user-attachments/assets/1e2a6518-5746-458a-884e-01f21573efb2
-
+https://github.com/user-attachments/assets/5fc18e13-3558-48a9-bff5-fac2440d4444
 
 
-Overview
 
-RamadanApp is an Android application built using modern development practices and tools. The app is structured following the MVVM architecture with a clear separation of concerns. It utilizes Jetpack Compose for UI and includes a YouTube player to stream videos. The application is modular, with features organized into separate packages.
+#Overview
+
+RamadanApp is an Android application built using modern development practices and tools. The app is structured following the Mvi architecture with a clear separation of concerns. It utilizes Jetpack Compose for UI and includes a YouTube player to stream videos. The application is modular, with features organized into separate packages.
 
 Technologies Used
-
 Kotlin: Primary programming language
 
-MVVM Architecture: Ensures separation of concerns and maintainability
+Mvi Architecture: Ensures separation of concerns and maintainability (Action , event ,state ) we wrap them in contract interface  
+
+Base ViewModel
+
+Base UseCase
+
+retrofit call adapter for handel and wrap exception 
+
+Room DB for caching the videos 
 
 Coroutines: For asynchronous operations
 
@@ -145,3 +150,4 @@ Extend Ktor integration for networking
 
 Expand feature set with more functionalities
 
+work manger for refresh data 
