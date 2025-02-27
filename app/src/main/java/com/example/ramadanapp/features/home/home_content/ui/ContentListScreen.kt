@@ -1,5 +1,6 @@
 package com.example.ramadanapp.features.home.home_content.ui
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -21,11 +22,9 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -41,29 +40,46 @@ import com.example.ramadanapp.R
 import com.example.ramadanapp.common.extentions.extractYouTubeVideoId
 import com.example.ramadanapp.common.ui.composable.YouTubePlayer
 import com.example.ramadanapp.common.ui.composable.YouTubeThumbnail
-import com.example.ramadanapp.features.home.home_content.ui.viewmodel.HomeViewModel
+import com.example.ramadanapp.features.home.home_content.ui.viewmodel.content_list.ContentListContract
+import com.example.ramadanapp.features.home.home_content.ui.viewmodel.content_list.ContentListViewModel
+
 
 @Composable
 fun ContentListScreen(
     category: String,
-    selectedVideoId: String,
-    viewModel: HomeViewModel = hiltViewModel(),
+    viewModel: ContentListViewModel = hiltViewModel(),
     onBackClick: () -> Unit
 ) {
-    val lifecycleOwner = LocalLifecycleOwner.current
-    val homeVideos by viewModel.groupedVideos.collectAsState()
-    val videoList = homeVideos[category] ?: emptyList()
 
-    var playingVideo by remember { mutableStateOf(videoList.find { it.url == selectedVideoId }) }
-    val filteredVideoList = videoList.filter { it != playingVideo }
+    //  Send action when the screen opens
+    LaunchedEffect(category) {
+        Log.d("TAG", "ContentListScreen: $category")
+        viewModel.onActionTrigger(ContentListContract.ContentListAction.GetItems(category))
+    }
+    val contentListEvent by viewModel.singleEvent.collectAsState(initial = null)
+
+    //  Handle events
+    LaunchedEffect(contentListEvent) {
+        contentListEvent?.let {
+            when (it) {
+                is ContentListContract.ContentListEvent.ShowError -> {
+                    Log.e("ContentListScreen", "Error: ${it.exception.message}")
+                }
+            }
+        }
+    }
+
+    val lifecycleOwner = LocalLifecycleOwner.current
+
+    val viewState by viewModel.viewState.collectAsState()
 
     Column(modifier = Modifier.fillMaxSize()) {
-        // ✅ Top Bar with Back Button
+        //  Top Bar with Back Button
         Box(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(60.dp) // Adjusted height
-                .background(Color.Green) // Background color
+                .height(60.dp)
+                .background(Color.Green)
         ) {
             IconButton(
                 onClick = onBackClick,
@@ -72,19 +88,19 @@ fun ContentListScreen(
                     .padding(top = 16.dp)
             ) {
                 Icon(
-                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
-                contentDescription = stringResource(R.string.back),
-                tint = Color.White
-            )
+                    imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                    contentDescription = stringResource(R.string.back),
+                    tint = Color.White
+                )
             }
         }
 
         // ✅ Video Player Below Top Bar
-        playingVideo?.let { video ->
+        viewState. playingVideo?.let { video ->
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(Color.Black) // Placeholder background
+                    .background(Color.Black)
             ) {
                 YouTubePlayer(
                     youtubeVideoId = video.url.extractYouTubeVideoId(),
@@ -93,13 +109,13 @@ fun ContentListScreen(
                 )
             }
         }
-        playingVideo?.let { video ->
+
+        viewState.playingVideo?.let { video ->
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(horizontal = 16.dp), // Reduced padding
+                    .padding(horizontal = 16.dp),
                 horizontalArrangement = Arrangement.SpaceBetween
-
             ) {
                 Text(
                     text = video.title,
@@ -109,12 +125,11 @@ fun ContentListScreen(
                 IconButton(onClick = { /* Handle Share */ }) {
                     Icon(imageVector = Icons.Default.Share, contentDescription = stringResource(R.string.share))
                 }
-
                 IconButton(onClick = { /* Handle Save */ }) {
                     Icon(imageVector = Icons.Default.FavoriteBorder, contentDescription = stringResource(R.string.save))
                 }
-
             }
+
             Text(
                 text = buildAnnotatedString {
                     withStyle(
@@ -123,30 +138,25 @@ fun ContentListScreen(
                             textDecoration = TextDecoration.Underline
                         )
                     ) {
-                        append(stringResource(R.string.more_videos)) // Now using string resource
+                        append(stringResource(R.string.more_videos))
                     }
                     withStyle(style = SpanStyle(color = Color.Blue)) {
                         append(video.category)
-                    }
-                    append(" - ") // Separator
-                    withStyle(style = SpanStyle(color = Color.Gray)) {
-                        append(video.subCategory)
                     }
                 },
                 style = MaterialTheme.typography.headlineSmall,
                 modifier = Modifier.padding(horizontal = 16.dp)
             )
-
         }
 
-            Spacer(modifier = Modifier.height(8.dp))
+        Spacer(modifier = Modifier.height(8.dp))
 
         LazyColumn(modifier = Modifier.padding(horizontal = 16.dp)) {
-            items(filteredVideoList) { video ->
+            items(viewState.filteredVideos) { item ->
                 YouTubeThumbnail(
                     modifier = Modifier.padding(vertical = 8.dp),
-                    video,
-                    onClickWithVideo = { playingVideo = video }
+                    item = item,
+                    onClickWithItem = { viewModel.setPlayingVideo(item) }
                 )
             }
         }

@@ -2,6 +2,9 @@ package com.example.ramadanapp.common.di
 
 import com.example.ramadanapp.common.data.repository.remote.RamadanApiService
 import com.example.ramadanapp.common.data.repository.remote.RetrofitNetworkProvider
+import com.example.ramadanapp.common.data.repository.remote.call_factory.RamadanAppCallAdapterFactory
+import com.example.ramadanapp.common.data.repository.remote.converter.ExceptionConverter
+import com.example.ramadanapp.common.data.repository.remote.converter.IExceptionConverter
 import com.example.ramadanapp.common.domain.repository.remote.INetworkProvider
 import dagger.Module
 import dagger.Provides
@@ -42,12 +45,14 @@ object NetworkModule {
     @Singleton
     fun provideRetrofit(
         okHttpClient: OkHttpClient.Builder,
-        gsonConverterFactory: GsonConverterFactory
+        gsonConverterFactory: GsonConverterFactory,
+        ramadanAppCallAdapterFactory: RamadanAppCallAdapterFactory
     ): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient.build())
-            .baseUrl("https://api.RamadanApp.com/v1/")
+            .baseUrl("https://raw.githubusercontent.com/")
             .addConverterFactory(gsonConverterFactory)
+            .addCallAdapterFactory(ramadanAppCallAdapterFactory)
             .build()
     }
 
@@ -55,5 +60,17 @@ object NetworkModule {
     @Singleton
     fun providesRamadanApiService(retrofit: Retrofit): RamadanApiService =
         retrofit.create(RamadanApiService::class.java)
+
+    @Provides
+    @Singleton
+    fun provideCallAdapter(exceptionConverter: IExceptionConverter): RamadanAppCallAdapterFactory {
+        return RamadanAppCallAdapterFactory.create(exceptionConverter)
+    }
+
+    @Provides
+    @Singleton
+    fun provideExceptionConverter(): IExceptionConverter {
+        return ExceptionConverter()
+    }
 
 }

@@ -5,6 +5,8 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.dagger.hilt)
     kotlin("kapt")
+    alias(libs.plugins.ksp)
+
 }
 
 android {
@@ -43,6 +45,10 @@ android {
 }
 
 dependencies {
+    //Room
+    implementation(libs.room.ktx)
+    implementation(libs.androidx.room.runtime)
+    ksp(libs.androidx.room.compiler)
 
     implementation (libs.core)
 
