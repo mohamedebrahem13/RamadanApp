@@ -25,9 +25,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -43,7 +40,8 @@ import com.example.ramadanapp.R
 import com.example.ramadanapp.common.extentions.extractYouTubeVideoId
 import com.example.ramadanapp.common.ui.composable.YouTubePlayer
 import com.example.ramadanapp.common.ui.composable.YouTubeThumbnail
-import com.example.ramadanapp.features.home.home_content.ui.viewmodel.ContentListViewModel
+import com.example.ramadanapp.features.home.home_content.ui.viewmodel.content_list.ContentListContract
+import com.example.ramadanapp.features.home.home_content.ui.viewmodel.content_list.ContentListViewModel
 
 
 @Composable
@@ -53,29 +51,30 @@ fun ContentListScreen(
     onBackClick: () -> Unit
 ) {
 
-    Log.d("TAG", "ContentListScreen: $category")
-
-    // ✅ Trigger filtering when the screen starts
-    LaunchedEffect(Unit) {
-        viewModel.setCategoryFilter(category)
+    //  Send action when the screen opens
+    LaunchedEffect(category) {
+        Log.d("TAG", "ContentListScreen: $category")
+        viewModel.onActionTrigger(ContentListContract.ContentListAction.GetItems(category))
     }
+    val contentListEvent by viewModel.singleEvent.collectAsState(initial = null)
 
-    val lifecycleOwner = LocalLifecycleOwner.current
-    val videoList by viewModel.filteredVideos.collectAsState()
-
-    var playingVideo by remember { mutableStateOf(videoList.firstOrNull()) }
-
-    // ✅ Automatically set the first video when the list updates
-    LaunchedEffect(videoList) {
-        if (playingVideo == null && videoList.isNotEmpty()) {
-            playingVideo = videoList.first()
+    //  Handle events
+    LaunchedEffect(contentListEvent) {
+        contentListEvent?.let {
+            when (it) {
+                is ContentListContract.ContentListEvent.ShowError -> {
+                    Log.e("ContentListScreen", "Error: ${it.exception.message}")
+                }
+            }
         }
     }
 
-    val filteredVideoList = videoList.filter { it != playingVideo }
+    val lifecycleOwner = LocalLifecycleOwner.current
+
+    val viewState by viewModel.viewState.collectAsState()
 
     Column(modifier = Modifier.fillMaxSize()) {
-        // ✅ Top Bar with Back Button
+        //  Top Bar with Back Button
         Box(
             modifier = Modifier
                 .fillMaxWidth()
@@ -97,7 +96,7 @@ fun ContentListScreen(
         }
 
         // ✅ Video Player Below Top Bar
-        playingVideo?.let { video ->
+        viewState. playingVideo?.let { video ->
             Box(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -111,7 +110,7 @@ fun ContentListScreen(
             }
         }
 
-        playingVideo?.let { video ->
+        viewState.playingVideo?.let { video ->
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
@@ -153,11 +152,11 @@ fun ContentListScreen(
         Spacer(modifier = Modifier.height(8.dp))
 
         LazyColumn(modifier = Modifier.padding(horizontal = 16.dp)) {
-            items(filteredVideoList) { item ->
+            items(viewState.filteredVideos) { item ->
                 YouTubeThumbnail(
                     modifier = Modifier.padding(vertical = 8.dp),
                     item = item,
-                    onClickWithItem = { playingVideo = item }
+                    onClickWithItem = { viewModel.setPlayingVideo(item) }
                 )
             }
         }

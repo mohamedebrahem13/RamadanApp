@@ -1,5 +1,6 @@
 package com.example.ramadanapp.features.home.home_content.data.repository
 
+import android.util.Log
 import com.example.ramadanapp.features.home.home_content.data.mapper.RamadanResponseMapper
 import com.example.ramadanapp.features.home.home_content.domain.models.RamadanResponse
 import com.example.ramadanapp.features.home.home_content.domain.repository.IHomeRepository
@@ -14,6 +15,7 @@ class HomeRepository @Inject constructor(
 
     override suspend fun getHomeDataFromRemote(): RamadanResponse {
         val response = remoteDataSource.fetchHomeData()
+        Log.d("HomeRepository", "Fetched data from remote: $response")
         return RamadanResponseMapper.dtoToDomain(response)
     }
 

@@ -13,6 +13,8 @@
     <string name="download">التنزيلات</string>
     <string name="everything_new">كل ماهو جديد</string>
     <string name="settings">الإعدادات</string>
-
+    <string name="network_connection_error">خطأ في الاتصال بالشبكة. يرجى التحقق من اتصال الإنترنت.</string>
+    <string name="parsing_error">تنسيق JSON غير صالح. يرجى التحقق من هيكل البيانات.</string>
+    <string name="unknown_network_error">حدث خطأ غير معروف في الشبكة.</string>
 
 </resources>
