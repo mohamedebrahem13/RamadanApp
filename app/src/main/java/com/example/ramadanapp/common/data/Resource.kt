@@ -7,6 +7,7 @@ sealed class Resource<out Model> {
     data class Success<out Model>(val model: Model) : Resource<Model>()
     data class Failure(val exception: Throwable) : Resource<Nothing>()
 
+    // todo i see no need to companion 
     companion object {
         fun <Model> loading(
             loading: Boolean = true, partialData: Model? = null

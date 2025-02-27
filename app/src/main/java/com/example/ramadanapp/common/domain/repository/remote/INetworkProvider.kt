@@ -2,6 +2,7 @@ package com.example.ramadanapp.common.domain.repository.remote
 
 import java.lang.reflect.Type
 
+// todo why i need this interface ? 
 interface INetworkProvider {
     suspend fun <ResponseBody, RequestBody> post(
         responseWrappedModel: Type, pathUrl: String, headers: Map<String, Any>? = null,
