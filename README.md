@@ -1,5 +1,4 @@
 # RamadanApp
-## Screenshots
 
 ## 📸 Screenshots  
 
