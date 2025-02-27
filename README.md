@@ -3,15 +3,7 @@
 
 ## 📸 Screenshots  
 
-##  Home Screen  
-![Image](https://github.com/user-attachments/assets/f71bbfe6-f0a8-47c9-96c6-5effc131808d)
-
-
-## content list screen  
-![Image](https://github.com/user-attachments/assets/636a8c3d-7351-428a-8254-c4a1521173ba)
-
-## content list screen
-![Image](https://github.com/user-attachments/assets/56e5fb7d-90fb-40d0-acce-6c56331e771c)
+<table style="width: 100%; border-collapse: collapse;"><tbody><tr><th style="width: 50%; text-align: center; border: 1px solid #ccc; padding: 8px;">Image</th><th style="width: 50%; text-align: center; border: 1px solid #ccc; padding: 8px;">Image</th></tr><tr><td style="width: 50%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Image" src="https://github.com/user-attachments/assets/56e5fb7d-90fb-40d0-acce-6c56331e771c"></td><td style="width: 50%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Image" src="https://github.com/user-attachments/assets/39ede69f-9ee2-4319-ac2c-066c3a226607"></td></tr><tr><th style="width: 50%; text-align: center; border: 1px solid #ccc; padding: 8px;">Image</th><th style="width: 50%; text-align: center; border: 1px solid #ccc; padding: 8px;"></th></tr><tr><td style="width: 50%; text-align: center; border: 1px solid #ccc; padding: 8px;"><img style="max-width: 100%; height: auto;" alt="Image" src="https://github.com/user-attachments/assets/71ebbbd1-fec3-48bc-97f8-3ef61ca963b3"></td><td style="width: 50%; text-align: center; border: 1px solid #ccc; padding: 8px;"></td></tr></tbody></table>
 
 # Video
 https://github.com/user-attachments/assets/5fc18e13-3558-48a9-bff5-fac2440d4444
