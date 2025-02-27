@@ -4,13 +4,14 @@
 ## 📸 Screenshots  
 
 ##  Home Screen  
-![Image](https://github.com/user-attachments/assets/56e5fb7d-90fb-40d0-acce-6c56331e771c)
+![Image](https://github.com/user-attachments/assets/f71bbfe6-f0a8-47c9-96c6-5effc131808d)
+
 
 ## content list screen  
 ![Image](https://github.com/user-attachments/assets/636a8c3d-7351-428a-8254-c4a1521173ba)
 
 ## content list screen
-![Image](https://github.com/user-attachments/assets/f71bbfe6-f0a8-47c9-96c6-5effc131808d)
+![Image](https://github.com/user-attachments/assets/56e5fb7d-90fb-40d0-acce-6c56331e771c)
 
 # Video
 https://github.com/user-attachments/assets/5fc18e13-3558-48a9-bff5-fac2440d4444
