@@ -1,6 +1,5 @@
 package com.example.ramadanapp.features.home.home_content.domain.intractor
 
-import android.util.Log
 import com.example.ramadanapp.common.domain.intractor.BaseUseCase
 import com.example.ramadanapp.features.home.home_content.domain.models.RamadanResponse
 import com.example.ramadanapp.features.home.home_content.domain.repository.IHomeRepository
@@ -12,7 +11,6 @@ class GetHomeDataFromRemoteUseCase(
     override suspend fun execute(params: Unit?): RamadanResponse {
         val response  = homeRepository.getHomeDataFromRemote()
         homeRepository.saveRamadanResponse(response)
-        Log.d("GetHomeDataFromRemoteUseCase", "Fetched data from remote: $response")
         return response
     }
 
