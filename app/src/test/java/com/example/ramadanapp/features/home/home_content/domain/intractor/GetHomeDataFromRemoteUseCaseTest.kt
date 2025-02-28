@@ -45,14 +45,15 @@ class GetHomeDataFromRemoteUseCaseTest {
 
             // Ensure saveRamadanResponse was called with the correct response
             coVerify(exactly = 1) { homeRepository.saveRamadanResponse(ramadanResponse) }
-            val thirdItem = expectMostRecentItem()            // 3️⃣ Handle possible final Progress(false)
+
+            // Handle possible final Progress(false)
+            val thirdItem = expectMostRecentItem()
             if (thirdItem is Resource.Progress) {
                 assertFalse(thirdItem.loading) // Ensure loading is false at the end
             }
             awaitComplete() // Ensure the flow completes
         }
     }
-
 
     @Test
     fun `invoke should emit loading, then failure when repository throws exception`() = runTest {
@@ -71,7 +72,9 @@ class GetHomeDataFromRemoteUseCaseTest {
             val actualException = (secondItem as Resource.Failure).exception
             assertTrue(actualException is RamadanAppException.Unknown) // Ensure correct exception type
             assertEquals("Unknown error appeared", actualException.message) // Match the expected error message
-            val thirdItem = expectMostRecentItem()            // 3️⃣ Handle possible final Progress(false)
+
+            // Handle possible final Progress(false)
+            val thirdItem = expectMostRecentItem()
             if (thirdItem is Resource.Progress) {
                 assertFalse(thirdItem.loading) // Ensure loading is false at the end
             }
@@ -92,12 +95,13 @@ class GetHomeDataFromRemoteUseCaseTest {
             val secondItem = awaitItem()
             assertTrue(secondItem is Resource.Success) // Ensure it's a success state
             assertEquals(RamadanResponse(emptyList(), emptyList()), (secondItem as Resource.Success).model) // Validate empty list
-            val thirdItem = expectMostRecentItem()            // 3️⃣ Handle possible final Progress(false)
+
+            // Handle possible final Progress(false)
+            val thirdItem = expectMostRecentItem()
             if (thirdItem is Resource.Progress) {
                 assertFalse(thirdItem.loading) // Ensure loading is false at the end
             }
             awaitComplete()
         }
     }
-
 }
