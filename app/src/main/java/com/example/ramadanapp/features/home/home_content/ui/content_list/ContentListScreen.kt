@@ -1,4 +1,4 @@
-package com.example.ramadanapp.features.home.home_content.ui
+package com.example.ramadanapp.features.home.home_content.ui.content_list
 
 import android.util.Log
 import androidx.compose.foundation.background
@@ -40,8 +40,6 @@ import com.example.ramadanapp.R
 import com.example.ramadanapp.common.extentions.extractYouTubeVideoId
 import com.example.ramadanapp.common.ui.composable.YouTubePlayer
 import com.example.ramadanapp.common.ui.composable.YouTubeThumbnail
-import com.example.ramadanapp.features.home.home_content.ui.viewmodel.content_list.ContentListContract
-import com.example.ramadanapp.features.home.home_content.ui.viewmodel.content_list.ContentListViewModel
 
 
 @Composable

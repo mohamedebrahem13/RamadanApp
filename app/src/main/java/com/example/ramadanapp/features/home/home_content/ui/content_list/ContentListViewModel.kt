@@ -1,4 +1,4 @@
-package com.example.ramadanapp.features.home.home_content.ui.viewmodel.content_list
+package com.example.ramadanapp.features.home.home_content.ui.content_list
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope

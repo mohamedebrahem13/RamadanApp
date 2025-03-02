@@ -1,4 +1,4 @@
-package com.example.ramadanapp.features.home.home_content.ui
+package com.example.ramadanapp.features.home.home_content.ui.home_content
 import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,8 +26,6 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.ramadanapp.R
 import com.example.ramadanapp.common.ui.composable.YouTubeThumbnail
 import com.example.ramadanapp.features.home.home_content.domain.models.RamadanResponse
-import com.example.ramadanapp.features.home.home_content.ui.viewmodel.home_content.HomeContract
-import com.example.ramadanapp.features.home.home_content.ui.viewmodel.home_content.HomeViewModel
 
 @Composable
 fun HomeScreenContent(

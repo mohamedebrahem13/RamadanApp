@@ -6,8 +6,8 @@ import androidx.navigation.navigation
 import androidx.navigation.toRoute
 import com.example.ramadanapp.features.home.downloads.ui.DownloadsScreen
 import com.example.ramadanapp.features.home.favorites.ui.FavoritesScreen
-import com.example.ramadanapp.features.home.home_content.ui.ContentListScreen
-import com.example.ramadanapp.features.home.home_content.ui.HomeScreenContent
+import com.example.ramadanapp.features.home.home_content.ui.content_list.ContentListScreen
+import com.example.ramadanapp.features.home.home_content.ui.home_content.HomeScreenContent
 import com.example.ramadanapp.features.home.newcontent.ui.NewContentScreen
 import com.example.ramadanapp.features.home.settings.ui.SettingsScreen
 import kotlinx.serialization.Serializable
