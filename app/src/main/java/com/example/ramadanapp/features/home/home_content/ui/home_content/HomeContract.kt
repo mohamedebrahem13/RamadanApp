@@ -1,4 +1,4 @@
-package com.example.ramadanapp.features.home.home_content.ui.viewmodel.home_content
+package com.example.ramadanapp.features.home.home_content.ui.home_content
 
 import com.example.ramadanapp.common.data.models.RamadanAppException
 import com.example.ramadanapp.common.ui.viewmodel.ViewAction
