@@ -54,6 +54,10 @@ abstract class BaseUseCase<out Model, in Params> {
     }.flowOn(Dispatchers.IO)
 
     private fun handleError(e: Exception): RamadanAppException {
-        return if (e is RamadanAppException) e else RamadanAppException.Unknown("Unknown error appeared")
+        return when (e) {
+            is RamadanAppException -> e
+            is IllegalArgumentException -> RamadanAppException.IllegalArgument(e.message)
+            else -> RamadanAppException.Unknown("Unknown error appeared")
+        }
     }
 }

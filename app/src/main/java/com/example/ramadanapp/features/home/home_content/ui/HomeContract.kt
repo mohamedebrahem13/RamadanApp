@@ -1,4 +1,4 @@
-package com.example.ramadanapp.features.home.home_content.ui.home_content
+package com.example.ramadanapp.features.home.home_content.ui
 
 import com.example.ramadanapp.common.data.models.RamadanAppException
 import com.example.ramadanapp.common.ui.viewmodel.ViewAction
@@ -10,11 +10,11 @@ import com.example.ramadanapp.features.home.home_content.domain.models.RamadanRe
 interface HomeContract {
 
     sealed class HomeAction : ViewAction {
-        data class SelectCategory(val categoryTitle: String) : HomeAction()
+        data class SelectCategory(val playListId: String) : HomeAction()
     }
 
     sealed class HomeEvent : ViewEvent {
-        data class NavigateToCategory(val categoryTitle: String) : HomeEvent()
+        data class NavigateToPlayList(val playListId: String) : HomeEvent()
         data class ShowError(val exception: RamadanAppException) : HomeEvent()
     }
 

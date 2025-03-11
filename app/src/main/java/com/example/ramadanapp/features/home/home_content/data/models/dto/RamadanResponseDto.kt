@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName
 data class RamadanResponseDto(
     @SerializedName("sections")
     val sections: List<SectionDto>?,
-
-    @SerializedName("items")
-    val items: List<ItemDto>?
+    @SerializedName("total_video_count") val totalVideoCount: Int?,
+    @SerializedName("playlist_count") val playlistCount: Int?
 )

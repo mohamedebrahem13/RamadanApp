@@ -7,7 +7,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.wrapContentSize
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -23,16 +22,16 @@ import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
 import com.example.ramadanapp.common.extentions.extractYouTubeVideoId
 import com.example.ramadanapp.common.extentions.getYouTubeThumbnailUrl
+import com.example.ramadanapp.features.home.content_list.domain.models.VideoItem
 import com.example.ramadanapp.features.home.home_content.domain.models.Category
-import com.example.ramadanapp.features.home.home_content.domain.models.Item
 
 @Composable
 fun YouTubeThumbnail(
     modifier: Modifier = Modifier,
     category: Category? = null,  // Nullable category
-    item: Item? = null,  // Nullable item
+    item: VideoItem? = null,  // Nullable item
     onClickCategory: ((Category) -> Unit)? = null,
-    onClickWithItem: ((Item) -> Unit)? = null,  // Updated function name
+    onClickWithItem: ((VideoItem) -> Unit)? = null,
     isVertical: Boolean = false
 ) {
     Box(

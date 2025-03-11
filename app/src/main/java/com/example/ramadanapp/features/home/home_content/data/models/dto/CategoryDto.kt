@@ -7,5 +7,9 @@ data class CategoryDto(
     val title: String?,
 
     @SerializedName("url")
-    val url: String?
+    val url: String?,
+
+    @SerializedName("playlist_id")
+    val playlistId: String?
+
 )

@@ -19,6 +19,6 @@ class HomeRemoteDS @Inject constructor(
     }
 
     companion object {
-        private const val END_POINT = "MahmoudMabrok/MyDataCenter/main/ramadan.json"
+        private const val END_POINT = "data.json"
     }
 }
