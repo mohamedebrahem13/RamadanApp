@@ -50,7 +50,7 @@ object NetworkModule {
     ): Retrofit {
         return Retrofit.Builder()
             .client(okHttpClient.build())
-            .baseUrl("https://raw.githubusercontent.com/")
+            .baseUrl("https://raw.githubusercontent.com/MahmoudMabrok/MyDataCenter/main/")
             .addConverterFactory(gsonConverterFactory)
             .addCallAdapterFactory(ramadanAppCallAdapterFactory)
             .build()

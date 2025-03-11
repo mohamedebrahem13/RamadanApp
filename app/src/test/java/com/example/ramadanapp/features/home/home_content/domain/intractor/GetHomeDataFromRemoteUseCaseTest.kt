@@ -3,8 +3,9 @@ package com.example.ramadanapp.features.home.home_content.domain.intractor
 import app.cash.turbine.test
 import com.example.ramadanapp.common.data.Resource
 import com.example.ramadanapp.common.data.models.RamadanAppException
-import com.example.ramadanapp.features.home.home_content.domain.models.Item
+import com.example.ramadanapp.features.home.home_content.domain.models.Category
 import com.example.ramadanapp.features.home.home_content.domain.models.RamadanResponse
+import com.example.ramadanapp.features.home.home_content.domain.models.Section
 import com.example.ramadanapp.features.home.home_content.domain.repository.IHomeRepository
 import io.mockk.Runs
 import io.mockk.coEvery
@@ -24,11 +25,21 @@ class GetHomeDataFromRemoteUseCaseTest {
 
     @Test
     fun `invoke should emit loading, then success when repository returns data`() = runTest {
-        val mockItems = listOf(
-            Item("title1", "url1", "Category1"),
-            Item("title2", "url1", "Category2")
+        val mockCategories = listOf(
+            Category("PL123", "Islamic Lessons", "https://example.com/lesson1"),
+            Category("PL456", "Ramadan Talks", "https://example.com/talk1")
         )
-        val ramadanResponse = RamadanResponse(emptyList(), mockItems)
+
+        val mockSections = listOf(
+            Section("Section 1", mockCategories),
+            Section("Section 2", mockCategories)
+        )
+
+        val ramadanResponse = RamadanResponse(
+            sections = mockSections,
+            totalVideoCount = 2,
+            playlistCount = 2
+        )
 
         // Mock repository responses
         coEvery { homeRepository.getHomeDataFromRemote() } returns ramadanResponse
@@ -85,7 +96,9 @@ class GetHomeDataFromRemoteUseCaseTest {
 
     @Test
     fun `invoke should emit loading, then success with empty list when repository returns no data`() = runTest {
-        coEvery { homeRepository.getHomeDataFromRemote() } returns RamadanResponse(emptyList(), emptyList())
+        val emptyResponse = RamadanResponse(emptyList(), 0, 0) // Ensure correct parameters
+
+        coEvery { homeRepository.getHomeDataFromRemote() } returns emptyResponse
         coEvery { homeRepository.saveRamadanResponse(any()) } just Runs // Mock saveRamadanResponse
 
         getHomeVideosUseCase().test {
@@ -94,7 +107,7 @@ class GetHomeDataFromRemoteUseCaseTest {
 
             val secondItem = awaitItem()
             assertTrue(secondItem is Resource.Success) // Ensure it's a success state
-            assertEquals(RamadanResponse(emptyList(), emptyList()), (secondItem as Resource.Success).model) // Validate empty list
+            assertEquals(emptyResponse, (secondItem as Resource.Success).model) // Validate empty response
 
             // Handle possible final Progress(false)
             val thirdItem = expectMostRecentItem()
@@ -104,4 +117,5 @@ class GetHomeDataFromRemoteUseCaseTest {
             awaitComplete()
         }
     }
+
 }

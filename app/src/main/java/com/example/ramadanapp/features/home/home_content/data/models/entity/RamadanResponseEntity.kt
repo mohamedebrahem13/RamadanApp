@@ -10,5 +10,6 @@ import com.example.ramadanapp.common.data.repository.local.Converters
 data class RamadanResponseEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val sections: List<SectionEntity>, // TypeConverter needed
-    val items: List<ItemEntity> // TypeConverter needed
+    val totalVideoCount: Int,
+    val playlistCount: Int
 )

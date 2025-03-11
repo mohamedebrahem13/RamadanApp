@@ -2,15 +2,12 @@ package com.example.ramadanapp.features.home.home_content.data.mapper
 
 import com.example.ramadanapp.common.data.mapper.Mapper
 import com.example.ramadanapp.features.home.home_content.data.models.dto.CategoryDto
-import com.example.ramadanapp.features.home.home_content.data.models.dto.ItemDto
 import com.example.ramadanapp.features.home.home_content.data.models.dto.RamadanResponseDto
 import com.example.ramadanapp.features.home.home_content.data.models.dto.SectionDto
 import com.example.ramadanapp.features.home.home_content.data.models.entity.CategoryEntity
-import com.example.ramadanapp.features.home.home_content.data.models.entity.ItemEntity
 import com.example.ramadanapp.features.home.home_content.data.models.entity.RamadanResponseEntity
 import com.example.ramadanapp.features.home.home_content.data.models.entity.SectionEntity
 import com.example.ramadanapp.features.home.home_content.domain.models.Category
-import com.example.ramadanapp.features.home.home_content.domain.models.Item
 import com.example.ramadanapp.features.home.home_content.domain.models.RamadanResponse
 import com.example.ramadanapp.features.home.home_content.domain.models.Section
 
@@ -18,33 +15,34 @@ object RamadanResponseMapper : Mapper<RamadanResponseDto, RamadanResponse, Ramad
 
     override fun dtoToDomain(model: RamadanResponseDto): RamadanResponse {
         return RamadanResponse(
-            sections = model.sections.orEmpty().map { it.toDomain() },
-            items = model.items.orEmpty().map { it.toDomain() }
+            sections = model.sections?.map { it.toDomain() } ?: emptyList(),
+            totalVideoCount = model.totalVideoCount ?: 0,
+            playlistCount = model.playlistCount ?: 0
         )
     }
 
     override fun domainToEntity(model: RamadanResponse): RamadanResponseEntity {
         return RamadanResponseEntity(
             sections = model.sections.map { it.toEntity() },
-            items = model.items.map { it.toEntity() }
+            totalVideoCount = model.totalVideoCount,
+            playlistCount = model.playlistCount
         )
     }
 
     override fun entityToDomain(model: RamadanResponseEntity?): RamadanResponse {
-        return if (model == null) {
-            RamadanResponse(sections = emptyList(), items = emptyList())
-        } else {
+        return model?.let {
             RamadanResponse(
-                sections = model.sections.map { it.toDomain() },
-                items = model.items.map { it.toDomain() }
+                sections = it.sections.map { section -> section.toDomain() },
+                totalVideoCount = it.totalVideoCount,
+                playlistCount = it.playlistCount
             )
-        }
+        } ?: RamadanResponse(emptyList(), 0, 0)
     }
 
     private fun SectionDto.toDomain(): Section {
         return Section(
             title = this.title.orEmpty(),
-            categories = this.categories.orEmpty().map { it.toDomain() }
+            categories = this.categories?.map { it.toDomain() } ?: emptyList()
         )
     }
 
@@ -65,45 +63,27 @@ object RamadanResponseMapper : Mapper<RamadanResponseDto, RamadanResponse, Ramad
     private fun CategoryDto.toDomain(): Category {
         return Category(
             title = this.title.orEmpty(),
-            url = this.url.orEmpty()
+            url = this.url.orEmpty(),
+            playlistId = this.playlistId.orEmpty()
+
         )
     }
 
     private fun Category.toEntity(): CategoryEntity {
         return CategoryEntity(
             title = this.title,
-            url = this.url
+            url = this.url,
+            playlistId = this.playlistId
+
         )
     }
 
     private fun CategoryEntity.toDomain(): Category {
         return Category(
             title = this.title,
-            url = this.url
-        )
-    }
-
-    private fun ItemDto.toDomain(): Item {
-        return Item(
-            title = this.title.orEmpty(),
-            url = this.url.orEmpty(),
-            category = this.category.orEmpty()
-        )
-    }
-
-    private fun Item.toEntity(): ItemEntity {
-        return ItemEntity(
-            title = this.title,
             url = this.url,
-            category = this.category
-        )
-    }
+            playlistId = this.playlistId
 
-    private fun ItemEntity.toDomain(): Item {
-        return Item(
-            title = this.title,
-            url = this.url,
-            category = this.category
         )
     }
 }

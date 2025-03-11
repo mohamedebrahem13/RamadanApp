@@ -6,8 +6,8 @@ import androidx.navigation.navigation
 import androidx.navigation.toRoute
 import com.example.ramadanapp.features.home.downloads.ui.DownloadsScreen
 import com.example.ramadanapp.features.home.favorites.ui.FavoritesScreen
-import com.example.ramadanapp.features.home.home_content.ui.content_list.ContentListScreen
-import com.example.ramadanapp.features.home.home_content.ui.home_content.HomeScreenContent
+import com.example.ramadanapp.features.home.content_list.ui.ContentListScreen
+import com.example.ramadanapp.features.home.home_content.ui.HomeScreenContent
 import com.example.ramadanapp.features.home.newcontent.ui.NewContentScreen
 import com.example.ramadanapp.features.home.settings.ui.SettingsScreen
 import kotlinx.serialization.Serializable
@@ -29,7 +29,7 @@ sealed class Destination {
     @Serializable
     data object Settings : Destination()
     @Serializable
-    data class ContentList(val categoryTitle: String) : Destination()
+    data class ContentList(val playListId: String) : Destination()
 
     @Serializable
     data object HomeGraph : Destination()
@@ -52,16 +52,16 @@ fun NavGraphBuilder.homeGraph(navController: NavController) {
     navigation<Destination.HomeGraph>(startDestination = Destination.Home) {
         composable<Destination.Home> {
             HomeScreenContent(
-                onCategoryClick = { categoryTitle ->
+                onCategoryClick = { playListId ->
                     // Navigate to ContentList screen
-                    navController.navigate(Destination.ContentList(categoryTitle))
+                    navController.navigate(Destination.ContentList(playListId))
 
                 }
             )
         }
         composable<Destination.ContentList> { backStackEntry ->
             val args = backStackEntry.toRoute<Destination.ContentList>()
-            ContentListScreen(args.categoryTitle){
+            ContentListScreen(args.playListId){
                 navController.popBackStack()
             }
 

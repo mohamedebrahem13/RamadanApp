@@ -1,4 +1,4 @@
-package com.example.ramadanapp.features.home.home_content.ui.home_content
+package com.example.ramadanapp.features.home.home_content.ui
 import android.util.Log
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -39,8 +39,8 @@ fun HomeScreenContent(
     LaunchedEffect(homeEvent) {
         homeEvent?.let { event ->
             when (event) {
-                is HomeContract.HomeEvent.NavigateToCategory -> {
-                    onCategoryClick(event.categoryTitle)
+                is HomeContract.HomeEvent.NavigateToPlayList -> {
+                    onCategoryClick(event.playListId)
                 }
                 is HomeContract.HomeEvent.ShowError -> {
                     Log.e("HomeScreen", "Error: ${event.exception.message}")
@@ -57,7 +57,6 @@ fun HomeScreenContent(
             onNotificationClick = { /*TODO*/ },
             onSearchClick = { /*TODO*/ }
         )
-
         when {
             homeState.isLoading -> {
                 LoadingIndicator(modifier = Modifier.align(Alignment.Center))
@@ -94,7 +93,7 @@ fun HomeContent(
             YouTubeThumbnail(
                 Modifier.height(250.dp),
                 category = category,
-                onClickCategory = { onAction(HomeContract.HomeAction.SelectCategory(category.title)) } // ✅ Send action
+                onClickCategory = { onAction(HomeContract.HomeAction.SelectCategory(category.playlistId)) } // ✅ Send action
             )
         }
 
@@ -120,7 +119,11 @@ fun HomeContent(
                                     .height(150.dp)
                                     .padding(horizontal = 4.dp),
                                 category = category,
-                                onClickCategory = { onAction(HomeContract.HomeAction.SelectCategory(category.title)) } // ✅ Send action
+                                onClickCategory = {
+                                    Log.d("TAG", "HomeContent: ${category.playlistId}")
+                                    onAction(
+                                    HomeContract.HomeAction.SelectCategory(category.playlistId)
+                                ) } // ✅ Send action
                             )
                         }
                     }
@@ -129,6 +132,7 @@ fun HomeContent(
         }
     }
 }
+
 @Composable
 fun LoadingIndicator(modifier: Modifier = Modifier) {
     Box(

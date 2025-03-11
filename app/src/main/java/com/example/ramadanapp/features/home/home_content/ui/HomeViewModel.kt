@@ -1,4 +1,4 @@
-package com.example.ramadanapp.features.home.home_content.ui.home_content
+package com.example.ramadanapp.features.home.home_content.ui
 
 import android.util.Log
 import androidx.lifecycle.viewModelScope
@@ -30,7 +30,7 @@ class HomeViewModel @Inject constructor(
                     is Resource.Progress -> setState(oldViewState.copy(isLoading = localResource.loading))
 
                     is Resource.Success -> {
-                        if (localResource.model.sections.isNotEmpty() || localResource.model.items.isNotEmpty()) {
+                        if (localResource.model.sections.isNotEmpty()) {
                             // Use local data
                             setState(oldViewState.copy(isLoading = false, homeData = localResource.model))
                         } else {
@@ -71,7 +71,7 @@ class HomeViewModel @Inject constructor(
     override fun onActionTrigger(action: ViewAction?) {
         when (action) {
             is HomeContract.HomeAction.SelectCategory -> {
-                sendEvent(HomeContract.HomeEvent.NavigateToCategory(action.categoryTitle))
+                sendEvent(HomeContract.HomeEvent.NavigateToPlayList(action.playListId))
             }
         }
     }
