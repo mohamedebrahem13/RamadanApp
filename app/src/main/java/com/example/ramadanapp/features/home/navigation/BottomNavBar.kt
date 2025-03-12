@@ -2,6 +2,7 @@ package com.example.ramadanapp.features.home.navigation
 
 import android.util.Log
 import androidx.compose.foundation.Image
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
 import androidx.compose.material3.NavigationBarItemDefaults
@@ -28,7 +29,7 @@ fun BottomNavBar(navController: NavController) {
         TopLevelRoute(destination = Destination.DownloadsGraph, title = stringResource(R.string.download), icon = R.drawable.arrow_circle_down_24dp),
         TopLevelRoute(destination = Destination.SettingsGraph, title = stringResource(R.string.settings), icon = R.drawable.settings_24dp_e8eaed)
     )
-    NavigationBar(containerColor = Color.White) {
+    NavigationBar(containerColor =MaterialTheme.colorScheme.surface) {
         val navBackStackEntry by navController.currentBackStackEntryAsState()
         val currentRoute = navBackStackEntry?.destination
 
@@ -41,14 +42,14 @@ fun BottomNavBar(navController: NavController) {
                         painter = painterResource(graphDestination.icon),
                         contentDescription = graphDestination.title,
                         colorFilter = ColorFilter.tint(
-                            if (isSelected) Color.Green else Color.Gray
+                            if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
                         )
                     )
                 },
                 label = {
                     Text(
                         text = graphDestination.title,
-                        color = if (isSelected) Color.Green else Color.Black
+                        color = if (isSelected) MaterialTheme.colorScheme.primary else MaterialTheme.colorScheme.onSurface
 
                     )
                 },

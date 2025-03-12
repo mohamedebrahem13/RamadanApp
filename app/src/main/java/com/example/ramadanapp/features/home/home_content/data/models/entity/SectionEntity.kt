@@ -11,5 +11,5 @@ import com.example.ramadanapp.common.data.repository.local.Converters
 data class SectionEntity(
     @PrimaryKey(autoGenerate = true) val id: Int = 0,
     val title: String,
-    val categories: List<CategoryEntity> // TypeConverter needed
+    val categories: List<CategoryEntity>
 )
