@@ -21,7 +21,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.example.ramadanapp.R
@@ -39,8 +38,8 @@ fun CustomTopBar(
             .height(150.dp) // Increased height
             .fillMaxWidth()
             .background(
-                Color.Green,
-                shape = RoundedCornerShape(bottomStart = 8.dp, bottomEnd = 8.dp)
+                MaterialTheme.colorScheme.primary, // Use theme-based primary color
+                shape = RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp)
             ) // Rounded bottom corners
             .clip(RoundedCornerShape(bottomStart = 16.dp, bottomEnd = 16.dp)) // Ensures clipping
             .padding(horizontal = 16.dp, vertical = 16.dp)
@@ -53,12 +52,12 @@ fun CustomTopBar(
             Column {
                 Text(
                     text = title,
-                    color = Color.White,
+                    color = MaterialTheme.colorScheme.onPrimary, // Correct color for text on primary background
                     style = MaterialTheme.typography.titleMedium
                 )
                 Text(
                     text = subtitle,
-                    color = Color.White,
+                    color = MaterialTheme.colorScheme.onPrimary, // Correct color for text on primary background
                     style = MaterialTheme.typography.bodyMedium
                 )
             }
@@ -68,7 +67,7 @@ fun CustomTopBar(
                     Icon(
                         imageVector = Icons.Default.Search,
                         contentDescription = stringResource(R.string.search),
-                        tint = Color.White
+                        tint = MaterialTheme.colorScheme.onPrimary // Correct color for icons on primary background
                     )
                 }
 
@@ -76,7 +75,7 @@ fun CustomTopBar(
                     Icon(
                         imageVector = Icons.Default.Notifications,
                         contentDescription = stringResource(R.string.notifications),
-                        tint = Color.White
+                        tint = MaterialTheme.colorScheme.onPrimary // Correct color for icons on primary background
                     )
                 }
             }

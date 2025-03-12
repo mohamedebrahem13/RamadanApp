@@ -10,6 +10,7 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.CircularProgressIndicator
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -93,19 +94,19 @@ fun HomeContent(
             YouTubeThumbnail(
                 Modifier.height(250.dp),
                 category = category,
-                onClickCategory = { onAction(HomeContract.HomeAction.SelectCategory(category.playlistId)) } // ✅ Send action
+                onClickCategory = { onAction(HomeContract.HomeAction.SelectCategory(category.playlistId)) }
             )
         }
 
         LazyColumn {
             items(response.sections) { section ->
                 Column {
-                    // ✅ Show section title
+                    // ✅ Theme-based text color
                     Text(
                         text = section.title,
                         fontSize = 25.sp,
                         fontWeight = FontWeight.Bold,
-                        color = Color.Black,
+                        color = MaterialTheme.colorScheme.onBackground, // ✅ Dynamic text color
                         modifier = Modifier
                             .fillMaxWidth()
                             .padding(vertical = 12.dp, horizontal = 16.dp)
@@ -120,10 +121,8 @@ fun HomeContent(
                                     .padding(horizontal = 4.dp),
                                 category = category,
                                 onClickCategory = {
-                                    Log.d("TAG", "HomeContent: ${category.playlistId}")
-                                    onAction(
-                                    HomeContract.HomeAction.SelectCategory(category.playlistId)
-                                ) } // ✅ Send action
+                                    onAction(HomeContract.HomeAction.SelectCategory(category.playlistId))
+                                }
                             )
                         }
                     }
@@ -132,6 +131,7 @@ fun HomeContent(
         }
     }
 }
+
 
 @Composable
 fun LoadingIndicator(modifier: Modifier = Modifier) {

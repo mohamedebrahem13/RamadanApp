@@ -71,11 +71,11 @@ fun ContentListScreen(
             modifier = Modifier
                 .fillMaxWidth()
                 .height(60.dp)
-                .background(Color.Green)
+                .background(MaterialTheme.colorScheme.primary)
         ) {
             IconButton(
                 onClick = onBackClick,
-                modifier = Modifier.align(Alignment.CenterStart)
+                modifier = Modifier.align(Alignment.BottomStart).padding(top = 20.dp)
             ) {
                 Icon(
                     imageVector = Icons.AutoMirrored.Filled.ArrowBack,
@@ -99,7 +99,6 @@ fun ContentListScreen(
                     Box(
                         modifier = Modifier
                             .wrapContentSize()
-                            .background(Color.Black)
                     ) {
                         YouTubePlayer(
                             youtubeVideoId = video.videoId,
