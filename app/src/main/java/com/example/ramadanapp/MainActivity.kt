@@ -1,14 +1,16 @@
 package com.example.ramadanapp
 
 import android.os.Bundle
-import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.core.os.LocaleListCompat
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.rememberNavController
 import com.example.ramadanapp.android.theme.RamadanAppTheme
@@ -22,9 +24,10 @@ import com.example.ramadanapp.features.home.navigation.settingsGraph
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setLocal()
         enableEdgeToEdge()
         setContent {
             RamadanAppTheme {
@@ -54,5 +57,12 @@ fun HomeNavHost() {
             downloadsGraph()
             settingsGraph()
         }
+    }
+}
+
+private fun setLocal() {
+    val language = AppCompatDelegate.getApplicationLocales()[0]?.toLanguageTag()
+    if (language == null || language != "ar") {
+        AppCompatDelegate.setApplicationLocales( LocaleListCompat.forLanguageTags("ar"))
     }
 }
